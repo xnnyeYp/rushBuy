@@ -12,3 +12,11 @@
 */
 
 $app->get('/', 'IndexController@Index');
+
+$app->post('users/login', 'UserController@login');
+$app->post('users/register', 'UserController@register');
+
+$app->group(['middleware' => 'auth'], function () use ($app) {
+    $app->get('users/info', 'UserController@info');
+});
+

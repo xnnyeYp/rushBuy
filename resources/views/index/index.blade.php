@@ -359,12 +359,10 @@
         </div>
         <div class="pro-choose-main container clearfix">
             <div class="pro-view span10" >
-                <div class="J_imgload imgload"></div>
-                <div id="J_img" class="img-con hide">
+                <div class="J_imgload imgload hide"></div>
+                <div id="J_img" class="img-con">
 
-                    <div id="J_sliderView" class="sliderWrap">
-
-                    </div>
+                    <div class="ui-wrapper" style="max-width: 100%;"><div class="ui-viewport" style="width: 100%; overflow: hidden; position: relative; height: 560px;"><div id="J_sliderView" class="sliderWrap" style="width: auto; position: relative;"><img data-src="//i8.mifile.cn/a1/pms_1492571518.47778002!560x560.jpg" class="slider done" src="//i8.mifile.cn/a1/pms_1492571518.47778002!560x560.jpg" style="float: none; list-style: none; position: absolute; width: 560px; z-index: 50; display: block;"></div></div><div class="ui-controls ui-has-pager ui-has-controls-direction" style="display: none;"><div class="ui-pager ui-default-pager"><div class="ui-pager-item"><a href="" data-slide-index="0" class="ui-pager-link active">1</a></div></div><div class="ui-controls-direction"><a class="ui-prev disabled" href="">上一张</a><a class="ui-next disabled" href="">下一张</a></div></div></div>
                 </div>
             </div>
             <div class="pro-info span10">
@@ -373,8 +371,8 @@
                 <!-- 提示 -->
                 <p class="sale-desc" id="J_desc">变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15" 护眼屏 / 四曲面玻璃/陶瓷机身</p>
                 <!-- 选择第一级别 -->
+                <span class="pro-price J_proPrice">2499元 </span>
 
-                <span class="pro-price J_proPrice"></span>
                 <div class="pro-book hide J_proBook">
                     <div class="pro-book-head">
                         预售
@@ -391,29 +389,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="loading J_load">
-                    <div class="loader"></div>
+                <div class="loading J_load  hide">
+                    <div class="loader hide"></div>
                 </div>
                 <div class="J_couponWrap coupon-wrap hide">
                     <span class="coupon-tag">优惠券</span>
                     <span class="coupon-name J_couponName"></span>
                     <a class="J_getCouponList" href="javascript:void(0);">立即领取</a>
                 </div>
-                <div class="J_main hide">
+                <div class="J_main">
 
                     <div class="J_addressWrap address-wrap hide">
 
                     </div>
-                    <div class="list-wrap" id="J_list">
-
-                    </div>
+                    <div class="list-wrap" id="J_list">   <div class="pro-choose pro-choose-col2 J_step" data-index="0"> <div class="step-title">  选择版本   </div> <ul class="step-list step-one clearfix">   <li class="btn btn-biglarge active" data-name="全网通版 6GB+64GB " data-price="2499元  " data-index="0" data-value="全网通版 6GB+64GB "> <a href="javascript:void(0);"> <span class="name">全网通版 6GB+64GB  </span>  <span class="price"> 2499元 </span>  </a> </li>      <li class="btn btn-biglarge" data-name="全网通版 6GB+128GB " data-price="2899元  " data-index="1" data-value="全网通版 6GB+128GB "> <a href="javascript:void(0);"> <span class="name">全网通版 6GB+128GB  </span>  <span class="price"> 2899元 </span>  </a> </li>      <li class="btn btn-biglarge" data-name=" 陶瓷尊享版 128GB" data-price="2999元  " data-index="2" data-value=" 陶瓷尊享版 128GB"> <a href="javascript:void(0);"> <span class="name"> 陶瓷尊享版 128GB </span>  <span class="price"> 2999元 </span>  </a> </li>   </ul> </div>    <div class="pro-choose pro-choose-col2 J_step" data-index="1"> <div class="step-title">  选择颜色   </div> <ul class="step-list clearfix">   <li class="btn btn-biglarge active" data-id="2171500038" data-cid="1171500037" data-name="小米6 全网通版 6GB+64GB 亮黑色" data-price="2499元" data-value="亮黑色" data-index="0"> <a href="javascript:void(0);">   <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bc99af80103f531296be0be09811bd7f.png" data-src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bc99af80103f531296be0be09811bd7f.png" alt="亮黑色" class="done">   亮黑色 </a> </li>     <li class="btn btn-biglarge disabled" data-value="亮蓝色"> <a href="javascript:void(0);">  <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/24051a2ed39e3342d98345d7b348965a.png" data-src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/24051a2ed39e3342d98345d7b348965a.png" class="done">  亮蓝色 </a> </li>     <li class="btn btn-biglarge disabled" data-value="陶瓷黑色"> <a href="javascript:void(0);">  <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bc99af80103f531296be0be09811bd7f.png" data-src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bc99af80103f531296be0be09811bd7f.png" class="done">  陶瓷黑色 </a> </li>   </ul> </div> <div class="pro-choose list-choose list-choose-small" id="J_safety"> <div class="step-title"> 选择小米提供的意外险 <a onclick="_msq.push(['trackEvent', '小米6 意外保险_了解意外险_产品购买页', '小米6 意外保险', 'pcpid', '']);" href="//order.mi.com/product/insurance?type=mi6" target="_blank">了解意外险 &gt;</a> </div> <ul> <li onclick="_msq.push(['trackEvent', '小米6 意外保险_产品购买页', '小米6 意外保险', 'pcpid', '']);" data-price="249元" data-name="小米6 意外保险" data-id="2171900005"> <i class="iconfont icon-checkbox"><em>√</em></i> <img src="//i1.mifile.cn/a1/pms_1494299369.33736262.jpg?width=50&amp;height=50"> <div> <span class="name">小米6 意外保险</span> <p class="desc">手机意外损坏，一年内免费维修</p> <span class="price">  249元  </span> </div> </li> </ul></div></div>
                     <!-- 电视会员服务块 -->
                     <!--             <div class="pro-choose hide" id="J_mitvMemberty">
                                     <div class="step-title">
                                         选择会员服务 <a href="">了解会员卡 &gt;</a>
                                     </div>
                                 </div> -->
-                    <div id="J_relation"></div>
+                    <div id="J_relation" style="height: 0px; overflow: hidden;"><div class="pro-choose list-choose list-choose-parts" id="J_parts"> <div class="step-title"> 搭配购买 </div> <div class="list-box"> <a class="iconfont J_extend" href="javascript:void(0);"></a> <p class="list-tips J_listTips">搭配一起购买 <span class="J_saleMax">, <span> 最多省 <span class="J_salePrice">14.1</span>元 </span> </span> </p> <div class="list-desc J_listDescBox hide"> <p class="tips">已选择 <span class="J_listNum">0</span> 款配件 <a href="javascript:void(0);" class="J_listDelete">移除</a></p> <p class="desc"></p> <p class="price"></p> </div> </div> <div class="list"> <ul class="hide">    <li> <i class="iconfont icon-checkbox"><em>√</em></i> <img src="//i8.mifile.cn/v1/a1/dd3352a5-41c1-cbae-8a8d-2428c4aeb041!100x100.jpg" class="img"> <span class="price">   <em>39元 </em> <del data-maxsave="10">  49元  </del> </span> <div> <span class="name">小米6 硅胶保护套 红色</span> <p class="desc">超细纤维柔软内衬，呵护你的手机</p> <div>   <a href="javascript:void(0);" data-img="//i8.mifile.cn/v1/a1/dd3352a5-41c1-cbae-8a8d-2428c4aeb041!100x100.jpg" data-id="2171500021" data-name="小米6 硅胶保护套 红色" data-is_bargain="true" data-bargain_id="2171500021-0-1-3184" data-price="39元 " data-originalprice="49元 " class="active"> <img src="//i8.mifile.cn/v1/a1/dd3352a5-41c1-cbae-8a8d-2428c4aeb041!30x30.jpg"></a>   <a href="javascript:void(0);" data-img="//i8.mifile.cn/v1/a1/a2eca01e-4d1d-cf9d-30d0-6472dc55ab6e!100x100.jpg" data-id="2171500023" data-name="小米6 硅胶保护套 蓝色" data-is_bargain="true" data-bargain_id="2171500023-0-1-3184" data-price="39元 " data-originalprice="49元 "> <img src="//i8.mifile.cn/v1/a1/a2eca01e-4d1d-cf9d-30d0-6472dc55ab6e!30x30.jpg"></a>  </div> </div> </li>   <li> <i class="iconfont icon-checkbox"><em>√</em></i> <img src="//i8.mifile.cn/v1/a1/0a0afd27-7ce3-ce6b-436a-c0f848f0343d!100x100.jpg" class="img"> <span class="price">   <em>14.9元 </em> <del data-maxsave="4.1">  19元  </del> </span> <div> <span class="name">小米6 标准高透贴膜 透明</span> <p class="desc">完美还原小米6梦幻画质   </p> <div>   <a href="javascript:void(0);" data-img="//i8.mifile.cn/v1/a1/0a0afd27-7ce3-ce6b-436a-c0f848f0343d!100x100.jpg" data-id="2171500024" data-name="小米6 标准高透贴膜 透明" data-is_bargain="true" data-bargain_id="2171500024-0-1-3183" data-price="14.9元 " data-originalprice="19元 " class="active"> <img src="//i8.mifile.cn/v1/a1/0a0afd27-7ce3-ce6b-436a-c0f848f0343d!30x30.jpg"></a>  </div> </div> </li>   <li> <i class="iconfont icon-checkbox"><em>√</em></i> <img src="//i8.mifile.cn/v1/a1/def5bedf-e734-7281-b07a-4c5141769d37!100x100.jpg" class="img"> <span class="price">    <em>299元 </em> <del data-maxsave="0">  </del> </span> <div> <span class="name">小米降噪耳机Type-C版 白色</span> <p class="desc">随时随地，安静聆听好声音</p> <div>   <a href="javascript:void(0);" data-img="//i8.mifile.cn/v1/a1/def5bedf-e734-7281-b07a-4c5141769d37!100x100.jpg" data-id="2171500034" data-name="小米降噪耳机Type-C版 白色" data-price="299元 " data-originalprice="299元 " class="active"> <img src="//i8.mifile.cn/v1/a1/def5bedf-e734-7281-b07a-4c5141769d37!30x30.jpg"></a>   <a href="javascript:void(0);" data-img="//i8.mifile.cn/v1/a1/3949e67c-406a-9ab9-5116-7fef8d9b565c!100x100.jpg" data-id="2171600001" data-name="小米降噪耳机Type-C版 黑色" data-price="299元 " data-originalprice="299元 "> <img src="//i8.mifile.cn/v1/a1/3949e67c-406a-9ab9-5116-7fef8d9b565c!30x30.jpg"></a>  </div> </div> </li>  </ul> </div></div></div>
                     <!-- 上面安装服务 -->
                     <!--                    <div class="pro-choose list-choose hide" id="J_install">
                                            <div class="step-title">
@@ -433,20 +429,14 @@
                                            </div>
                                        </div> -->
                     <!-- 已选择的产品 -->
-                    <div class="pro-list hide" id="J_proList">
-
+                    <div class="pro-list" id="J_proList"> <ul>   <li>小米6 全网通版 6GB+64GB 亮黑色   <span>2499元</span>  </li>        <li class="totlePrice">  总计  ：2499元</li> </ul></div>
+                    <ul class="btn-wrap clearfix" id="J_buyBtnBox">      <li> <a data-sign="disabled" data-type="presales" data-tip="" class="btn btn-line-primary btn-biglarge J_setRemind" href="javascript:void(0);" data-isbigtap="true">设置开售提醒</a> </li>     </ul>
+                    <div class="pro-policy" id="J_policy">
+                        <i class="iconfont support"></i>
+                        <i class="iconfont nosupport hide"></i>
+                        <span class="J_tips ">支持7天无理由退货</span>
                     </div>
-                    <ul class="btn-wrap clearfix" id="J_buyBtnBox">
-
-                    </ul>
-                    <div class="pro-policy hide" id="J_policy">
-                        <i class="iconfont support">&#xe618;</i>
-                        <i class="iconfont nosupport">&#xe90c;</i>
-                        <span class="J_tips "></span>
-                    </div>
-                    <div class="J_addressWrap hide">
-
-                    </div>
+                    <div class="J_addressWrap"> <div class="user-default-address" id="J_userDefaultAddress"> <i class="iconfont iconfont-location"></i> <div> <div class="address-info"><span class="item">北京</span><span class="item">北京市</span><span class="item">东城区</span><span class="item">永定门外街道</span></div> <span class="switch-choose-regions" id="J_switchChooseRegions"> 修改 </span> </div> <div class="product-status soldout" id="J_productStatus"> <span class="init">正在加载...</span> <span class="sale">有货</span> <span class="over">该地区暂时无货</span> <span class="no">该地区暂不支持配送</span> <span class="pre">预售商品</span> <span class="book">预售</span> <span class="time"></span> </div> </div></div>
                 </div>
                 <div class="error hide J_error">
                     <h3>有点小问题，请点击按钮刷新重试</h3>
