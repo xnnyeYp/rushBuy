@@ -27,8 +27,12 @@
                 <div class="loading"><div class="loader"></div></div>
             </div>
         </div>
-        <div class="topbar-info" id="J_userInfo">
-            <a class="link" href="//order.mi.com/site/login" data-needlogin="true">登录</a><span class="sep">|</span><a class="link" href="https://account.xiaomi.com/pass/register" >注册</a>        </div>
+        <div class="topbar-info" id="J_userInfo" >
+            <a class="link" href="javascript:void(0)" data-needlogin="true" id="login-link">登录</a><span class="sep">|</span><a class="link" href="javascript:void(0)"  id="reg-link">注册</a>
+        </div>
+        <div class="topbar-info" id="login-success" style="display: none;">
+            <a class="link" href="javascript:void(0)" data-needlogin="true" id="username"></a><span class="sep">|</span><a class="link" href="javascript:void(0)"  id="logout">退出</a>
+        </div>
     </div>
 </div>
 <div class="site-header">
@@ -819,48 +823,258 @@
     </div>
 </div>
 <!-- .modal-globalSites END -->
+<style>
+    .nav_tabs {
+        padding: 27px 0 24px;
+        text-align: center;
+        font-size: 24px;
+        color: #e0e0e0;
+    }
+    .win_banner_mistore .nav_tabs a:hover, .win_banner_mistore .nav_tabs a.now {
+        color: #f56600;
+    }
+    .now {
+        color: #f56600;
+    }
+    #bg{ display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}
+     .line {
+        width: 1px;
+        height: 24px;
+        margin: 0 35px 0 42px;
+        border: 1px solid #e0e0e0;
+    }
+    .labelbox input {
+        width: 300px;
+        height: 22px;
+        line-height: 22px;
+        padding: 13px 16px 13px 14px;
+        display: block;
+        margin-left: 32px;
+    }
+.turn_area, .country_list, .item_account {
+float: none;
+}
 
-{{--<script src="//s01.mifile.cn/js/base.min.js?v2017a23"></script>
+.turn_area {
+display: none;
+height: 11px;
+padding: 18px 0 18px 10px;
+float: left;
+}
+    .labelbox {
+        display: block;
+        margin-bottom: 14px;
+    }
+    .win_banner_mistore .labelbox input {
+        width: 306px;
+    }
+    .pwd_panel {
+        margin-top: 15px;
+    }
+
+    .win_banner_mistore .btns_bg {
+        padding-bottom: 3px;
+    }
+.btns_bg {
+padding-top: 10px;
+padding-bottom: 15px;
+}
+     .btn_orange {
+        background-color: #f56600;
+    }
+    .error-msg {
+        color:red;
+        margin-left:37px;
+        display: none;
+    }
+</style>
+<div class="login" style="position: absolute;width:400px;z-index:1002;background: white;display: none;">
+    <div class="nav_tabs_panel">
+        <div id="nav-tabs" class="nav_tabs">
+            <a class="navtab-link now login-h" href="javascript:void(0);" data-tab="pwd">帐号登录</a>
+            <span class="line"></span>
+            <a class="navtab-link reg-h" href="javascript:void(0);" data-tab="qr">帐号注册</a>
+        </div>
+    </div>
+    <div id="login-item" class="tabs-con tabs_con now">
+        <label id="region-code" class="labelbox login_user c_b" for="">
+            <span class="error-msg login-error"></span>
+            <div class="country_list">
+                <div class="animation countrycode_selector" id="countrycode_selector">
+                    <span class="country_code"><tt class="countrycode-value" id="countrycode_value"></tt><i class="icon_arrow_down"></i></span>
+                </div>
+            </div>
+            <input class="item_account" autocomplete="off" type="text" name="user" id="username" placeholder="邮箱/手机号码">
+            <label class="labelbox pwd_panel c_b">
+
+                <input type="password" placeholder="密码" autocomplete="off" name="pwd" id="pwd">
+                <input type="text" placeholder="密码" autocomplete="off" id="visiablePwd" style="display:none">
+            </label>
+            <div class="btns_bg">
+                <input class="btnadpt btn_orange" id="login-button" type="submit" value="立即登录" style="width:334px;height:50px;border:none;">
+                <span id="custom_display_8" class="sns-default-container sns_default_container" style="display: none;">
+                          </span>
+            </div>
+        </label>
+    </div>
+    <div style="display: none;" id="reg-item" class="tabs-con tabs_con now">
+        <label id="region-code" class="labelbox login_user c_b" for="">
+            <span class="error-msg">帐号或密码错误</span>
+            <div class="country_list">
+                <div class="animation countrycode_selector" id="countrycode_selector">
+                    <span class="country_code"><tt class="countrycode-value" id="countrycode_value"></tt><i class="icon_arrow_down"></i></span>
+                </div>
+            </div>
+            <input class="item_account" autocomplete="off" type="text" name="user" id="username" placeholder="邮箱/手机号码">
+            <label class="labelbox pwd_panel c_b">
+
+                <input type="password" placeholder="密码" autocomplete="off" name="pwd" id="pwd">
+                <input type="text" placeholder="密码" autocomplete="off" id="visiablePwd" style="display:none">
+            </label>
+            <label class="labelbox pwd_panel c_b">
+
+                <input type="password" placeholder="确认密码" autocomplete="off" name="pwd_confirm" id="pwd">
+                <input type="text" placeholder="确认密码" autocomplete="off" id="visiablePwd" style="display:none">
+            </label>
+            <div class="btns_bg">
+                <input class="btnadpt btn_orange" id="login-button" type="submit" value="立即注册" style="width:334px;height:50px;border:none;">
+                <span id="custom_display_8" class="sns-default-container sns_default_container" style="display: none;">
+                          </span>
+            </div>
+        </label>
+    </div>
+</div>
+
+<div id="bg" ></div>
+<script src="/js/jquery-3.2.1.min.js"></script>
 <script>
-    (function() {
-        MI.namespace('GLOBAL_CONFIG');
-        MI.GLOBAL_CONFIG = {
-            orderSite: '//order.mi.com',
-            wwwSite: '//www.mi.com',
-            cartSite: '//cart.mi.com',
-            itemSite: '//item.mi.com',
-            assetsSite: '//s01.mifile.cn',
-            listSite: '//list.mi.com',
-            searchSite: '//search.mi.com',
-            mySite: '//my.mi.com',
-            damiaoSite:'//tp.hd.mi.com/',
-            damiaoGoodsId:["2160400006","2160400007","2162100004","2162800010","2155300001","2155300002","2163500025","2163500026","2163500027","2164200021","2142400036","2170800008","2171000055","2171500039","2171600005","1171800032","1171800031","1171800030","1171800035","1171800034","1171800033","1172000058","2171500038","2171800016","2171500037","2171900024"],
-            damiaoPresalesGoodsId:["2171500039","2171600005","1171800035","1171800034","1171800033","2171600026","2171500038","2171500037","2171900024","2171800017","2171800014"],
-            logoutUrl: '//order.mi.com/site/logout',
-            staticSite: '//static.mi.com',
-            quickLoginUrl: 'https://account.xiaomi.com/pass/static/login.html'
-        };
-        MI.setLoginInfo.orderUrl = MI.GLOBAL_CONFIG.orderSite + '/user/order';
-        MI.setLoginInfo.logoutUrl = MI.GLOBAL_CONFIG.logoutUrl;
-        MI.setLoginInfo.init(MI.GLOBAL_CONFIG);
-        MI.miniCart.init();
-        MI.updateMiniCart();
-    })();
+    $(function(){
+        var uri = 'http://115.126.100.43:8082/';
+        var left = ($(window).width() - $('.login').width()) / 2;
+        var top = ($(window).height() - $('.login').height()) / 2 - 20;
+        $('.login').offset({top:top,left:left});
+
+        /**
+         * 登录
+         */
+        $('#login-link').click(function(){
+            $('.login').show();
+            $('#bg').show();
+
+        });
+
+        $('#reg-link').click(function() {
+            $('.login').show();
+            $('#bg').show();
+            showReg();
+        });
+
+        $('.login-h').click(function () {
+            showLogin();
+        });
+        $('.reg-h').click(function () {
+            showReg();
+        });
+        function showLogin()
+        {
+            $('#login-item').show();
+            $('#reg-item').hide();
+            $('.navtab-link').toggleClass('now');
+        }
+
+        function showReg()
+        {
+            $('#login-item').hide();
+            $('#reg-item').show();
+            $('.navtab-link').toggleClass('now');
+        }
+
+        //写cookies
+
+        function setCookie(name,value)
+        {
+            var Days = 30;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days*24*60*60*1000);
+            document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+        }
+        //读取cookies
+        function getCookie(name)
+        {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+            if(arr=document.cookie.match(reg))
+
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+
+        //删除cookies
+        function delCookie(name)
+        {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval=getCookie(name);
+            if(cval!=null)
+                document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+        }
+
+        /*如果存在token，获取用户信息*/
+        var api_token = getCookie('token');
+
+        if (api_token != null) {
+            $.ajax({
+                url:'users/info',
+                type:'get',
+                headers: {"api-token" : api_token},
+                success:function (data)
+                {
+                    $('#J_userInfo').hide();
+                    $('#login-success').show();
+                    $('#username').text(data.username);
+                }
+            });
+        }
+
+        /*登录*/
+        $('#login-button').click(function () {
+            $.ajax({
+                url:'/users/login',
+                type:'post',
+                data:{
+                    'username' : $('#login-item').find('[name=user]').val(),
+                    'password' : $('#login-item').find('[name=pwd]').val()
+                },
+                success:function (res)
+                {
+                    var data = JSON.parse(res);
+                    if (data.error > 0) {
+                        $('.login-error').text(data.message);
+                        $('.login-error').show();
+                    } else {
+                        document.cookie = 'token=' + data.api_token;
+                        $('#J_userInfo').hide();
+                        $('#login-success').show();
+                        $('#username').text(data.username);
+                        $('.login').hide();
+                        $('#bg').hide();
+                    }
+                }
+            });
+        });
+
+        /*退出*/
+        $('#logout').click(function () {
+            delCookie('token');
+            $('#J_userInfo').show();
+            $('#login-success').hide();
+        });
+
+        $('input').click(function(){
+            $('.error-msg').hide();
+        });
+    });
 </script>
-<script src="//c1.mifile.cn/f/i/15/stat/js/xmsg_ti.js"></script>
-<script type="text/javascript" src="//s01.mifile.cn/js/buy/product_buy.min.js?2017061502"></script>
-<script>
-    var _msq = _msq || [];
-    _msq.push(['setDomainId', 100]);
-    _msq.push(['trackPageView']);
-    (function() {
-        var ms = document.createElement('script');
-        ms.type = 'text/javascript';
-        ms.async = true;
-        ms.src = '//c1.mifile.cn/f/i/15/stat/js/xmst.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ms, s);
-    })();
-</script>--}}
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -38,7 +39,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public static function register(Request $request)
     {
         if (self::where('username', $request->get("username"))->first()) {
-            return "该用户名已被注册！";
+            return json_encode(["error"=>4002, "message"=>"该用户名已被注册！"]);
         }
         $User = new User();
         $User->username = $request->get("username");
@@ -46,9 +47,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $User->email = $request->get("email");
 
         if ($User->save()) {
-            return "注册成功！";
+            return "SUCCESS";
         } else {
-            return "注册失败!";
+            return json_encode(["error"=>4003, "message"=>"该用户名已被注册！"]);
         }
     }
 
@@ -61,14 +62,23 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $user = self::where("username", $request->get("username"))->first();
 
+        if (empty($user)) {
+            return json_encode(["error"=>4004, "message"=>"请输入正确的用户名！"]);
+        }
+
         if (password_verify($request->get("password"), $user->password)) {
             $token = str_random(60);
             $user->api_token = $token;
             $user->save();
+            $user_info = [
+                'username'  => $user->username,
+                'email'     => $user->email,
+                'api_token' => $user->api_token
+            ];
 
-            return $token;
+            return json_encode($user_info);
         } else {
-            return "用户名或密码不正确";
+            return json_encode(["error"=>4004, "message"=>"用户名或密码错误！"]);
         }
 
     }

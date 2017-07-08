@@ -21,7 +21,7 @@ class UserController extends BaseController {
         if ($request->has('username') && $request->has('password') && $request->has('email')) {
             return User::register($request);
         } else {
-            return "请输入完整的用户信息！";
+            return json_encode(["error"=>4001, "message"=>"请输入完整的用户信息！"]);
         }
     }
 
@@ -30,7 +30,7 @@ class UserController extends BaseController {
         if ($request->has("username") && $request->has("password")) {
             return User::login($request);
         } else {
-            return "请输入完整的登录信息！";
+            return json_encode(["error"=>4001, "message"=>"请输入完整的登录信息!"]);
         }
     }
     
