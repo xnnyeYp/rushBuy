@@ -919,15 +919,18 @@ padding-bottom: 15px;
     </div>
     <div style="display: none;" id="reg-item" class="tabs-con tabs_con now">
         <label id="region-code" class="labelbox login_user c_b" for="">
-            <span class="error-msg">帐号或密码错误</span>
+            <span class="error-msg reg-error"></span>
             <div class="country_list">
                 <div class="animation countrycode_selector" id="countrycode_selector">
                     <span class="country_code"><tt class="countrycode-value" id="countrycode_value"></tt><i class="icon_arrow_down"></i></span>
                 </div>
             </div>
-            <input class="item_account" autocomplete="off" type="text" name="user" id="username" placeholder="邮箱/手机号码">
+            <input class="item_account" autocomplete="off" type="text" name="user" id="username" placeholder="用户名">
             <label class="labelbox pwd_panel c_b">
-
+                <input class="item_account" autocomplete="off" type="text" name="email" id="username" placeholder="邮箱/手机号码">
+            </label>
+            <span class="error-msg pwd-error">两次密码输入不一致</span>
+            <label class="labelbox pwd_panel c_b">
                 <input type="password" placeholder="密码" autocomplete="off" name="pwd" id="pwd">
                 <input type="text" placeholder="密码" autocomplete="off" id="visiablePwd" style="display:none">
             </label>
@@ -937,7 +940,7 @@ padding-bottom: 15px;
                 <input type="text" placeholder="确认密码" autocomplete="off" id="visiablePwd" style="display:none">
             </label>
             <div class="btns_bg">
-                <input class="btnadpt btn_orange" id="login-button" type="submit" value="立即注册" style="width:334px;height:50px;border:none;">
+                <input class="btnadpt btn_orange" id="reg-button" type="submit" value="立即注册" style="width:334px;height:50px;border:none;">
                 <span id="custom_display_8" class="sns-default-container sns_default_container" style="display: none;">
                           </span>
             </div>
@@ -1073,6 +1076,64 @@ padding-bottom: 15px;
 
         $('input').click(function(){
             $('.error-msg').hide();
+        });
+
+        /*注册*/
+        $('#reg-button').click(function () {
+            var reg_obj = $('#reg-item');
+            if (reg_obj.find('[name=pwd]').val() != reg_obj.find('[name=pwd_confirm]').val()) {
+                reg_obj.find('[name=pwd]').val('');
+                reg_obj.find('[name=pwd_confirm]').val('');
+                $('.pwd-error').show();
+
+                return;
+            }
+            $.ajax({
+                url: '/users/register',
+                type: 'post',
+                data: {
+                    'username': $('#reg-item').find('[name=user]').val(),
+                    'password': $('#reg-item').find('[name=pwd]').val(),
+                    'email': $('#reg-item').find('[name=email]').val()
+                },
+                success:function(res) {
+                    var data = JSON.parse(res);
+                    if (data.error > 0) {
+                        $('.reg-error').text(data.message);
+                        $('.reg-error').show();
+                    } else {
+                        document.cookie = 'token=' + data.api_token;
+                        $('#J_userInfo').hide();
+                        $('#login-success').show();
+                        $('#username').text(data.username);
+                        $('.login').hide();
+                        $('#bg').hide();
+                    }
+                }
+            });
+            /*$.ajax({
+                url:'/users/register',
+                type:'post',
+                data:{
+                    'username':reg_obj.find('[name=user]'),
+                    'password':reg_obj.find('[name=pwd]'),
+                    'email':reg_obj.find('[name=email]'),
+                },
+                success:function (res) {
+                    var data = JSON.parse(res);
+                    if (data.error > 0) {
+                        $('.reg-error').text(data.message);
+                        $('.reg-error').show();
+                    } else {
+                        document.cookie = 'token=' + data.api_token;
+                        $('#J_userInfo').hide();
+                        $('#login-success').show();
+                        $('#username').text(data.username);
+                        $('.login').hide();
+                        $('#bg').hide();
+                    }
+                }
+            });*/
         });
     });
 </script>

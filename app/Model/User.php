@@ -45,9 +45,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $User->username = $request->get("username");
         $User->password = password_hash($request->get("password"), PASSWORD_DEFAULT);
         $User->email = $request->get("email");
+        $User->api_token = str_random(60);
 
         if ($User->save()) {
-            return "SUCCESS";
+            $user_info = [
+                'username'  => $User->username,
+                'email'     => $User->email,
+                'api_token' => $User->api_token
+            ];
+
+            return json_encode($user_info);
         } else {
             return json_encode(["error"=>4003, "message"=>"该用户名已被注册！"]);
         }
