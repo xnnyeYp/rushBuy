@@ -18,5 +18,6 @@ $app->post('users/register', 'UserController@register');
 
 $app->group(['middleware' => 'auth'], function () use ($app) {
     $app->get('users/info', 'UserController@info');
+    $app->post('order/rushBuy', 'OrderController@rushBuy');
 });
 
